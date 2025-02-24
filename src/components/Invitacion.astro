@@ -134,7 +134,7 @@ const bgTimeCounter = `url(${bgCounter.src})`;
 		align-items: center;
 	}
 
-	.floresTop, .floresBottom {
+	#containerInvitacion .floresTop, #containerInvitacion .floresBottom {
 		background-repeat: no-repeat;
 		background-size: contain;
 		height: 924px;
@@ -142,19 +142,21 @@ const bgTimeCounter = `url(${bgCounter.src})`;
 		width: 75%;
 	}
 
-	.floresTop{
+	#containerInvitacion .floresTop{
 		background-image: var(--bgTop);
 		top: 0;
         left: 0;
 	}
 
-	.floresBottom{
+	#containerInvitacion .floresBottom{
 		background-image: var(--bgBottom);
+        background-position-x: right;
+        background-position-y: bottom;
 		bottom: 0;
         right: 0;
 	}
 
-	main {
+	#containerInvitacion main {
 		align-items: center;
 		background-image: var(--bgMain);
 		background-repeat: no-repeat;
@@ -166,7 +168,7 @@ const bgTimeCounter = `url(${bgCounter.src})`;
         background-position-x: center;
 	}
 
-    main > section {
+    #containerInvitacion main > section {
         padding: 20px 0;
         width: 68%;
         display: flex;
@@ -176,11 +178,11 @@ const bgTimeCounter = `url(${bgCounter.src})`;
         box-sizing: border-box;
     }
 
-    main > section#misa{
+    #containerInvitacion main > section#misa{
         flex-direction: column;
     }
 
-    main > section#misa .fecha {
+    #containerInvitacion main > section#misa .fecha {
         display: flex;
         align-items: center;
         color: #5a5c39;
@@ -190,45 +192,45 @@ const bgTimeCounter = `url(${bgCounter.src})`;
         margin-bottom: 30px;
     }
 
-    main > section#misa .fecha div {
+    #containerInvitacion main > section#misa .fecha div {
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    main > section#misa .fecha > div:nth-child(2) {
+    #containerInvitacion main > section#misa .fecha > div:nth-child(2) {
         flex-direction: column;
     }
 
-    main > section#misa .fecha > div:nth-child(2) > p {
+    #containerInvitacion main > section#misa .fecha > div:nth-child(2) > p {
         margin: 0;
     }
 
-    main > section#misa .fecha > div:nth-child(2) > p:first-child {
+    #containerInvitacion main > section#misa .fecha > div:nth-child(2) > p:first-child {
         font-size: 8rem;
     }
 
-    main > section#misa .iglesia {
+    #containerInvitacion main > section#misa .iglesia {
         color: #848664;
         text-align: center;
     }
 
-    main > section#misa .iglesia > p{
+    #containerInvitacion main > section#misa .iglesia > p{
         margin: 0;
     }
 
-    main > section#misa .iglesia > p:first-child{
+    #containerInvitacion main > section#misa .iglesia > p:first-child{
         font-size: 2rem;
         font-weight: bold;
     }
 
-    main > section#misa .iglesia > p:nth-child(2){
+    #containerInvitacion main > section#misa .iglesia > p:nth-child(2){
         font-size: 1.5rem;
         margin-bottom: 30px;
     }
 
-    main > section#datos {
+    #containerInvitacion main > section#datos {
         display: grid;
         grid-template-areas:
         "alyson paula"
@@ -236,51 +238,51 @@ const bgTimeCounter = `url(${bgCounter.src})`;
         grid-template-columns: 50% 50%;
     }
 
-    main > section#datos div {
+    #containerInvitacion main > section#datos div {
         text-align: center;
     }
 
-    main > section#datos div h1 {
+    #containerInvitacion main > section#datos div h1 {
         text-shadow: 2px 2px 10px gray;
         margin: 0;
     }
 
-    main > section#datos div h2 {
+    #containerInvitacion main > section#datos div h2 {
         color: #6b7b5e;
         font-weight: bold;
         font-size: 2.2rem;
         margin: 0;
     }
-    main > section#datos div p {
+    #containerInvitacion main > section#datos div p {
         color: #848664;
         font-size: 1.5rem;
         margin: .5rem 0;
     }
 
-    main > section#datos div.alyson{
+    #containerInvitacion main > section#datos div.alyson{
         grid-area: alyson;
     }
 
-    main > section#datos div.paula{
+    #containerInvitacion main > section#datos div.paula{
         grid-area: paula;
     }
 
-    main > section#datos div.padres{
+    #containerInvitacion main > section#datos div.padres{
         grid-area: padres;
         margin-top: 1.5rem;
     }
 
-    main > section#counter{
+    #containerInvitacion main > section#counter{
         color: #5a5c39;
         flex-direction: column;
     }
 
-    main > section#counter p{
+    #containerInvitacion main > section#counter p{
         font-size: 1.5rem;
         margin-top: 0;
     }
 
-    main > section#counter div.counter{
+    #containerInvitacion main > section#counter div.counter{
         align-items: center;
         background-image: var(--bgTimeCounter);
         background-repeat: no-repeat;
@@ -292,48 +294,48 @@ const bgTimeCounter = `url(${bgCounter.src})`;
         width: 90%;
     }
 
-    main > section#counter div.counter > div {
+    #containerInvitacion main > section#counter div.counter > div {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
 
-    main > section#counter div.counter > div > p {
+    #containerInvitacion main > section#counter div.counter > div > p {
         font-size: 4.5rem;
         margin-bottom: .5rem;
     }
 
-    main > section#counter div.counter > div > span {
+    #containerInvitacion main > section#counter div.counter > div > span {
         font-size: 1.5rem;
     }
 
-    main > section#counter div.counter > span {
+    #containerInvitacion main > section#counter div.counter > span {
         font-size: 2.5rem;
     }
 
-    main > section#recepcion{
+    #containerInvitacion main > section#recepcion{
         flex-direction: column;
     }
 
-    main > section#recepcion p{
+    #containerInvitacion main > section#recepcion p{
         font-size: 1.4rem;
         margin: .5rem;
     }
 
-    main > section#recepcion p:first-child {
+    #containerInvitacion main > section#recepcion p:first-child {
         color: #5a5c39;
         text-align: center;
         width: 60%;
     }
 
-    main > section#recepcion p:nth-child(2) {
+    #containerInvitacion main > section#recepcion p:nth-child(2) {
         color: #848664;
         font-weight: bold;
         margin-bottom: 2rem;
     }
 
-	main h1 {
+	#containerInvitacion main h1 {
 		font-size: 140px;
 		margin-top: 32rem;
 		margin-bottom: 0;
@@ -341,7 +343,7 @@ const bgTimeCounter = `url(${bgCounter.src})`;
 	
 
 	@media screen and (max-width: 1400px) {
-		.floresTop, .floresBottom {
+		#containerInvitacion .floresTop, #containerInvitacion .floresBottom {
 			height: 736px;
 		}
 
@@ -357,7 +359,7 @@ const bgTimeCounter = `url(${bgCounter.src})`;
 	}
 
 	@media screen and (max-width: 768px) {
-		.floresTop, .floresBottom {
+		#containerInvitacion .floresTop, #containerInvitacion .floresBottom {
 			background-size: contain;
 			height: 216px;
             width: 72vw;
@@ -383,28 +385,28 @@ const bgTimeCounter = `url(${bgCounter.src})`;
 			margin-top: 15rem;
 		}
 
-        main > section{
+        #containerInvitacion main > section{
             padding-left: 30px;
             padding-right: 30px;
             padding-bottom: 24px;
             width: 100%;
         }
 
-        main > section#misa .fecha {
+        #containerInvitacion main > section#misa .fecha {
             font-size: 1.5rem;
         }
 
-        main > section#misa .fecha > div:nth-child(2) > p:first-child {
+        #containerInvitacion main > section#misa .fecha > div:nth-child(2) > p:first-child {
             font-size: 3rem;
         }
 
-        main > section#misa .iglesia > p:first-child{
+        #containerInvitacion main > section#misa .iglesia > p:first-child{
             font-size: 1.6rem;
             font-weight: bold;
             margin-bottom: 10px;
         }
 
-        main > section#misa .iglesia > p:nth-child(2){
+        #containerInvitacion main > section#misa .iglesia > p:nth-child(2){
             font-size: 1.2rem;
         }
 
@@ -417,25 +419,25 @@ const bgTimeCounter = `url(${bgCounter.src})`;
             grid-template-columns: 1fr;
         }
 
-        main > section#counter div.counter{
+        #containerInvitacion main > section#counter div.counter{
             min-height: auto;
             width: 96vw;
         }
 
-        main > section#counter div.counter > div > span {
+        #containerInvitacion main > section#counter div.counter > div > span {
             font-size: 1.5rem;
             margin-top: 1rem;
         }
 
-        main > section#counter div.counter > span {
+        #containerInvitacion main > section#counter div.counter > span {
             margin-top: -50px;
         }
 
-        main > section#recepcion p:first-child {
+        #containerInvitacion main > section#recepcion p:first-child {
             width: 90%;
         }
 
-        main a {
+        #containerInvitacion main a {
             width: 50%;
             background: #848664;
 			color: #ffffff;

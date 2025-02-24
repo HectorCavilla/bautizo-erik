@@ -32,7 +32,6 @@ const bgMain = `url(${bgIntro.src})`;
 		font-weight: 400;
   		font-style: normal;
 		background-image: var(--backgroundUrl);
-		background-repeat: no-repeat;
 		background-size: cover;
 		margin: 0;
 	}
@@ -145,13 +144,6 @@ const bgMain = `url(${bgIntro.src})`;
 	@media screen and (max-width: 768px) {
 		#container .floresTop, #container .floresBottom {
 			background-size: contain;
-		}
-
-		#container .floresTop {
-			height: 235px;
-		}
-
-		#container .floresBottom {
 			height: 260px;
 		}
 
@@ -162,7 +154,7 @@ const bgMain = `url(${bgIntro.src})`;
 		#container main {
 			height: 90vh;
 			background-size: cover;
-			width: 100%;
+			width: 100vw;
 		}
 
 		#container main > h1 {
