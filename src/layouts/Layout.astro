@@ -1,22 +1,212 @@
+---
+import background from '../assets/background.png';
+import bgFloresTop from '../assets/bg-flores-top.png';
+import bgFloresBottom from '../assets/bg-flores-bottom.png';
+import bgIntro from '../assets/bg-introduccion.png';
+
+const backgroundUrl = `url(${background.src})`
+const bgTop = `url(${bgFloresTop.src})`;
+const bgBottom = `url(${bgFloresBottom.src})`;
+const bgMain = `url(${bgIntro.src})`;
+---
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Alyson & Regina | Nuestro Bautizo</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global define:vars={{ backgroundUrl, bgTop, bgBottom, bgMain }}>
+	@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Style+Script&display=swap');
+
 	html,
 	body {
+		font-family: 'Merriweather', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		font-weight: 400;
+  		font-style: normal;
+		background-image: var(--backgroundUrl);
+		background-repeat: no-repeat;
+		background-size: cover;
 		margin: 0;
+	}
+
+	hr { 
+		background: url('../assets/pleca.png') no-repeat top center;
+		background-size: contain;
+		display: block;
+		height: 20px;
+		border: 0;
+		position: relative;
+		width: 50%;
+	}
+
+	h1{
+		color: #848664;
+		font-family: "Style Script", serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	a {
+		border-radius: 10px;
+		color: #848664;
+		cursor: pointer;
+		border: solid 2px #848664;
+		text-decoration: none;
+		padding: 10px 40px;
+		text-align: center;
+		width: 10%;
+		z-index: 100;
+	}
+
+	#container {
+		height: auto;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 1;
+		-webkit-transition: opacity 2s;
+    	transition: opacity 2s;
+	}
+
+	#container.peace-out {
+		opacity: 0;
+	}
+
+	#container  .floresTop, #container  .floresBottom {
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 953px;
+		position: absolute;
 		width: 100%;
-		height: 100%;
+	}
+
+	#container .floresTop{
+		background-image: var(--bgTop);
+		top: 0;
+	}
+
+	#container .floresBottom{
+		background-image: var(--bgBottom);
+		bottom: 0;
+	}
+
+	#container main {
+		align-items: center;
+		background-image: var(--bgMain);
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: column;
+		height: 230vh;
+		justify-content: center;
+		width: 80%;
+		background-position-x: center;
+	}
+
+	#container main > h1 {
+		font-size: 140px;
+		margin-top: 32rem;
+		margin-bottom: 0;
+	}
+
+	#container main > img {
+		width: 66%;
+    	margin-left: -14px;
+	}
+
+	@media screen and (max-width: 1400px) {
+		#container {
+			height: 320vh;
+		}
+
+		#container .floresTop, #container .floresBottom {
+			height: 736px;
+		}
+
+		#container main {
+			height: 300vh;
+			width: 90%;
+			background-position: center;
+		}
+
+		#container main > img {
+			width: 75%;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		#container .floresTop, #container .floresBottom {
+			background-size: contain;
+		}
+
+		#container .floresTop {
+			height: 235px;
+		}
+
+		#container .floresBottom {
+			height: 260px;
+		}
+
+		#container {
+			height: 100vh;
+		}
+
+		#container main {
+			height: 90vh;
+			background-size: cover;
+			width: 100%;
+		}
+
+		#container main > h1 {
+			font-size: 56px;
+			margin-top: 12rem;
+		}
+
+		#container main > img {
+			width: 80%;
+			margin-left: 0;
+		}
+
+		#container a {
+			background: #848664;
+			bottom: 0;
+			color: #ffffff;
+			position: fixed;
+			width: 100%;
+			box-sizing: border-box;
+			border-radius: 0;
+		}
+
 	}
 </style>
+
+<script>
+	const infoBtn = document.getElementById('infoBtn');
+
+	infoBtn!.addEventListener('click', (e) => {
+		e.preventDefault()
+
+		window.scrollTo({ 
+			top: 0, // Scroll to the top of the page
+			left: 0, // Scroll to the leftmost position
+			behavior: 'smooth' // Smooth scrolling
+		});
+
+		document.getElementById('container')!.classList.toggle("peace-out");
+
+		setTimeout(() => {
+			document.getElementById('container')!.style.height = "0";
+
+			document.getElementById('info')!.classList.add('peace-in');
+			document.getElementById('containerInvitacion')!.style.display = "flex";
+		}, 2000);
+	})
+</script>

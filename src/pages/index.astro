@@ -1,6 +1,7 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Welcome from '../components/Welcome.astro';
+import Invitacion from '../components/Invitacion.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -8,4 +9,22 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
 	<Welcome />
+	<div class="info" id="info">
+		<Invitacion />
+	</div>
 </Layout>
+
+<style>
+	.info{
+		height: 0;
+		opacity: 0;
+		width: 100%;
+		-webkit-transition: opacity 2s;
+    	transition: opacity 2s;
+	}
+
+	#info.peace-in {
+		opacity: 1;
+		height: auto;
+	}
+</style>

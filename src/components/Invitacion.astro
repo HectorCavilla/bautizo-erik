@@ -1,0 +1,444 @@
+---
+import bgFloresTop from '../assets/flores-top-invitacion.png';
+import bgFloresBottom from '../assets/flores-bottom-invitacion.png';
+import bgIntro from '../assets/bg-invitacion.png';
+import bgCounter from '../assets/bg-counter.png';
+
+const bgTop = `url(${bgFloresTop.src})`;
+const bgBottom = `url(${bgFloresBottom.src})`;
+const bgMain = `url(${bgIntro.src})`;
+const bgTimeCounter = `url(${bgCounter.src})`;
+---
+
+<div id="containerInvitacion">
+	<div class="floresTop"></div>
+	<main>
+
+        <section id="misa">
+            <div class="fecha">
+                <div>
+                    <p>Domingo</p>
+                </div>
+                <div>
+                    <p>16</p>
+                    <p>10:00 A.M.</p>
+                </div>
+                <div>
+                    <p>de Marzo</p>
+                </div>
+            </div>
+            <div class="iglesia">
+                <p>Iglesia Sagrada Familia</p>
+                <p><span>Bacalar 30-30, 77509 Cancún, Q. R.</span></p>
+                <a href="https://maps.app.goo.gl/4AGmEwsDnv5aA3Dc6" target="_blank">Ver Mapa</a>
+            </div>
+        </section>
+        <hr />
+        <section id="datos">
+            <div class="alyson">
+                <h1>Alyson</h1>
+
+                <h2>MIS PADRINOS</h2>
+                <hr />
+
+                <p>Gladys Ivonne Salazar</p>
+                <p>José L. Sánchez Aguilar</p>
+            </div>
+            <div class="paula">
+                <h1>Regina</h1>
+
+                <h2>MIS PADRINOS</h2>
+                <hr />
+
+                <p>Delia M. May Alcaráz</p>
+                <p>Alfonso Vázquez Ortíz</p>
+            </div>
+            <div class="padres">
+                <h2>MIS PADRES</h2>
+                <hr />
+
+                <p>Jenny Olive Varguez</p>
+                <p>Eric Ramírez Cetina</p>
+            </div>
+        </section>
+        <hr />
+        <section id="counter">
+            <p>Faltan</p>
+            <div class="counter">
+                <div>
+                    <p id="dias"></p>
+                    <span>Días</span>
+                </div>
+                <span>:</span>
+                <div>
+                    <p id="horas"></p>
+                    <span>Horas</span>
+                </div>
+                <span>:</span>
+                <div>
+                    <p id="minutos"></p>
+                    <span>Minutos</span>
+                </div>
+            </div>
+        </section>
+        <hr />
+        <section id="recepcion">
+            <p>Después de la ceremonia religiosa te invitamos a festejar con nosotros en:</p>
+            <p>Jardín Social 14:00 hrs. (A un costado de Quinta San Vicente)</p>
+            <a href="https://maps.app.goo.gl/och45e5oHrghwwYo9" target="_blank">Ver Mapa</a>
+        </section>
+
+	</main>
+	<div class="floresBottom"></div>
+</div>
+
+<script>
+    function getDifference(): { days:number; hours:number; minutes:number; message?:string } {
+        const targetDate = new Date('2025-03-16T10:00:00');
+        const now: Date = new Date(); // Fecha y hora actual
+        const difference: number = targetDate.getTime() - now.getTime();
+
+        if (difference < 0) {
+            return { days: 0, hours: 0, minutes: 0, message: "La fecha ya ha pasado" };
+        }
+
+        let days: number = Math.floor(difference / (1000 * 60 * 60 * 24));
+        let hours: number = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes: number = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+        return { days, hours, minutes };
+    }
+
+    const imprimirTiempos = () => {
+        const { days, hours, minutes } = getDifference()
+
+        document.getElementById('dias')!.innerText = days.toString()
+        document.getElementById('horas')!.innerText = hours.toString()
+        document.getElementById('minutos')!.innerText = minutes.toString()
+    }
+
+    imprimirTiempos();
+
+    setInterval(() => {
+        imprimirTiempos();
+    }, 60000);
+
+</script>
+
+<style define:vars={{ bgTop, bgBottom, bgMain, bgTimeCounter }}>
+    #containerInvitacion {
+		height: auto;
+		position: relative;
+		display: none;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.floresTop, .floresBottom {
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 924px;
+		position: absolute;
+		width: 75%;
+	}
+
+	.floresTop{
+		background-image: var(--bgTop);
+		top: 0;
+        left: 0;
+	}
+
+	.floresBottom{
+		background-image: var(--bgBottom);
+		bottom: 0;
+        right: 0;
+	}
+
+	main {
+		align-items: center;
+		background-image: var(--bgMain);
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: column;
+		height: 230vh;
+		justify-content: center;
+		width: 80%;
+        background-position-x: center;
+	}
+
+    main > section {
+        padding: 20px 0;
+        width: 68%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
+
+    main > section#misa{
+        flex-direction: column;
+    }
+
+    main > section#misa .fecha {
+        display: flex;
+        align-items: center;
+        color: #5a5c39;
+        font-size: 2.5rem;
+        justify-content: space-evenly;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    main > section#misa .fecha div {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main > section#misa .fecha > div:nth-child(2) {
+        flex-direction: column;
+    }
+
+    main > section#misa .fecha > div:nth-child(2) > p {
+        margin: 0;
+    }
+
+    main > section#misa .fecha > div:nth-child(2) > p:first-child {
+        font-size: 8rem;
+    }
+
+    main > section#misa .iglesia {
+        color: #848664;
+        text-align: center;
+    }
+
+    main > section#misa .iglesia > p{
+        margin: 0;
+    }
+
+    main > section#misa .iglesia > p:first-child{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    main > section#misa .iglesia > p:nth-child(2){
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    main > section#datos {
+        display: grid;
+        grid-template-areas:
+        "alyson paula"
+        "padres padres";
+        grid-template-columns: 50% 50%;
+    }
+
+    main > section#datos div {
+        text-align: center;
+    }
+
+    main > section#datos div h1 {
+        text-shadow: 2px 2px 10px gray;
+        margin: 0;
+    }
+
+    main > section#datos div h2 {
+        color: #6b7b5e;
+        font-weight: bold;
+        font-size: 2.2rem;
+        margin: 0;
+    }
+    main > section#datos div p {
+        color: #848664;
+        font-size: 1.5rem;
+        margin: .5rem 0;
+    }
+
+    main > section#datos div.alyson{
+        grid-area: alyson;
+    }
+
+    main > section#datos div.paula{
+        grid-area: paula;
+    }
+
+    main > section#datos div.padres{
+        grid-area: padres;
+        margin-top: 1.5rem;
+    }
+
+    main > section#counter{
+        color: #5a5c39;
+        flex-direction: column;
+    }
+
+    main > section#counter p{
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+
+    main > section#counter div.counter{
+        align-items: center;
+        background-image: var(--bgTimeCounter);
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        min-height: 202px;
+        width: 90%;
+    }
+
+    main > section#counter div.counter > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    main > section#counter div.counter > div > p {
+        font-size: 4.5rem;
+        margin-bottom: .5rem;
+    }
+
+    main > section#counter div.counter > div > span {
+        font-size: 1.5rem;
+    }
+
+    main > section#counter div.counter > span {
+        font-size: 2.5rem;
+    }
+
+    main > section#recepcion{
+        flex-direction: column;
+    }
+
+    main > section#recepcion p{
+        font-size: 1.4rem;
+        margin: .5rem;
+    }
+
+    main > section#recepcion p:first-child {
+        color: #5a5c39;
+        text-align: center;
+        width: 60%;
+    }
+
+    main > section#recepcion p:nth-child(2) {
+        color: #848664;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+	main h1 {
+		font-size: 140px;
+		margin-top: 32rem;
+		margin-bottom: 0;
+	}
+	
+
+	@media screen and (max-width: 1400px) {
+		.floresTop, .floresBottom {
+			height: 736px;
+		}
+
+        #containerInvitacion {
+            height: 320vh;
+        }
+
+		#containerInvitacion main {
+			height: 300vh;
+			width: 90%;
+			background-position: center;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.floresTop, .floresBottom {
+			background-size: contain;
+			height: 235px;
+		}
+
+        #containerInvitacion {
+			height: auto;
+		}
+
+        #containerInvitacion main {
+            height: auto;
+            background: none;
+			width: 100%;
+            padding: 5rem 0 2rem 0;
+        }
+
+        #containerInvitacion main > hr {
+			width: 90%;
+		}
+
+        #containerInvitacion main h1 {
+			font-size: 6rem;
+			margin-top: 15rem;
+		}
+
+        main > section{
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 24px;
+            width: 100%;
+        }
+
+        main > section#misa .fecha {
+            font-size: 1.5rem;
+        }
+
+        main > section#misa .fecha > div:nth-child(2) > p:first-child {
+            font-size: 3rem;
+        }
+
+        main > section#misa .iglesia > p:first-child{
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        main > section#misa .iglesia > p:nth-child(2){
+            font-size: 1.2rem;
+        }
+
+        #containerInvitacion main > section#datos {
+            display: grid;
+            grid-template-areas:
+            "alyson"
+            "paula"
+            "padres";
+            grid-template-columns: 1fr;
+        }
+
+        main > section#counter div.counter{
+            min-height: auto;
+        }
+
+        main > section#counter div.counter > div > span {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        main > section#counter div.counter > span {
+            margin-top: -50px;
+        }
+
+        main > section#recepcion p:first-child {
+            width: 90%;
+        }
+
+        main a {
+            width: 50%;
+            background: #848664;
+			color: #ffffff;
+			box-sizing: border-box;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+	}
+</style>
